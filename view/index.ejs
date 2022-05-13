@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental Website</title>
-    <!-- Link to CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Box Icons -->
-    <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <%- include('head.ejs') %>
 </head>
 <body>
     <!-- Header -->
@@ -19,241 +11,69 @@
         <div class="bx bx-menu" id="menu-icon"></div>
 
         <ul class="navbar">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#ride">Ride</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
         </ul>
+
         <div class="header-btn">
-            <a href="sign-up" class="sign-up">Sign Up</a>
-            <a href="sign-in" class="sign-in">Sign In</a>
+            <a href="sign-up" class="sign-up">Cadastrar-se</a>
+            <a href="sign-in" class="sign-in">Entrar</a>
         </div>
     </header>
     <!-- Home -->
     <section class="home" id="home">
         <div class="text">
-            <h1><span>Looking</span> to <br> rent a car</h1>
+            <h1><span>Procurando</span> por <br> um bom carro?</h1>
             <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing <br> elit. 
-                Quam doloribus labore fuga!
+                Aqui na <span>Car Rental</span> você encontrar os melhores modelos
+                de carros <br>para alugar. E o melhor? Sem sair de casa!
             </p>
-            <div class="app-stores">
-                <img src="img/ios.png" alt="">
-                <img src="img/512x512.png" alt="">
-            </div>
-        </div>
-
-        <div class="form-container">
-            <form action="">
-                <div class="input-box">
-                    <span>Location</span>
-                    <input type="search" name="" id="" placeholder="Search Places">
-                </div>
-                <div class="input-box">
-                    <span>Pick-Up Date</span>
-                    <input type="date" name="" id="">
-                </div>
-                <div class="input-box">
-                    <span>Return Date</span>
-                    <input type="date" name="" id="">
-                </div>
-                <input type="submit" name="" id="" class="btn">
-            </form>
-        </div>
-    </section>
-    <!-- Ride -->
-    <section class="ride" id="ride">
-        <div class="heading">
-            <span>How Its Work</span>
-            <h1>Rent With 3 Easy Steps</h1>
-        </div>
-        <div class="ride-container">
-            <div class="box">
-                <i class='bx bxs-map'></i>
-                <h2>Choose A Location</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint natus quod placeat facere. Officia, doloribus.</p>
-            </div>
-
-            <div class="box">
-                <i class='bx bxs-calendar-check'></i>
-                <h2>Pick-Up Date</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint natus quod placeat facere. Officia, doloribus.</p>
-            </div>
-
-            <div class="box">
-                <i class='bx bxs-calendar-star'></i>
-                <h2>Book A Car</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint natus quod placeat facere. Officia, doloribus.</p>
-            </div>
         </div>
     </section>
     <!-- Services -->
-    <section class="services" id="services">
+    <section class="catalogo" id="catalogo">
         <div class="heading">
-            <span>Bests Services</span>
-            <h1>Explore Out Top Deals <br> From Top Rated Dealers</h1>
+            <span>Loja</span>
+            <h1>Explore As Melhores Ofertas <br> Dos Melhores Locadores </h1>
         </div>
         <div class="services-container">
             <div class="box">
                 <div class="box-img">
                     <img src="img/car1.jpg" alt="">
                 </div>
-                <p>2017</p>
-                <h3>2018 Honda Civic</h3>
-                <h2>$58500 | $358 <span>/month</span></h2>
-                <a href="#" class="btn">Rent Now</a>
+                <p>Marca</p>
+                <h3>Nome do Carro</h3>
+                <label>Cor do Carro</label>
+                <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
+                <h4 class="btn">Disponível Hoje</h4>
             </div>
 
             <div class="box">
                 <div class="box-img">
                     <img src="img/car2.jpg" alt="">
                 </div>
-                <p>2017</p>
-                <h3>2018 Honda Civic</h3>
-                <h2>$58500 | $358 <span>/month</span></h2>
-                <a href="#" class="btn">Rent Now</a>
+                <p>Marca</p>
+                <h3>Nome do Carro</h3>
+                <label>Cor do Carro</label>
+                <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
+                <h4 class="btn">Indisponível Hoje</h4>
             </div>
 
             <div class="box">
                 <div class="box-img">
                     <img src="img/car3.jpg" alt="">
                 </div>
-                <p>2017</p>
-                <h3>2018 Honda Civic</h3>
-                <h2>$58500 | $358 <span>/month</span></h2>
-                <a href="#" class="btn">Rent Now</a>
-            </div>
-
-            <div class="box">
-                <div class="box-img">
-                    <img src="img/car4.jpg" alt="">
-                </div>
-                <p>2017</p>
-                <h3>2018 Honda Civic</h3>
-                <h2>$58500 | $358 <span>/month</span></h2>
-                <a href="#" class="btn">Rent Now</a>
-            </div>
-
-            <div class="box">
-                <div class="box-img">
-                    <img src="img/car5.jpg" alt="">
-                </div>
-                <p>2017</p>
-                <h3>2018 Honda Civic</h3>
-                <h2>$58500 | $358 <span>/month</span></h2>
-                <a href="#" class="btn">Rent Now</a>
-            </div>
-
-            <div class="box">
-                <div class="box-img">
-                    <img src="img/car6.jpg" alt="">
-                </div>
-                <p>2017</p>
-                <h3>2018 Honda Civic</h3>
-                <h2>$58500 | $358 <span>/month</span></h2>
-                <a href="#" class="btn">Rent Now</a>
-            </div>
-        </div>
-    </section>
-    <!-- About -->
-    <section class="about" id="about">
-        <div class="heading">
-            <span>About Us</span>
-            <h1>Best Customer Experience</h1>
-        </div>
-        <div class="about-container">
-            <div class="about-img">
-                <img src="img/about.png" alt="">
-            </div>
-            <div class="about-text">
-                <span>About Us</span>
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                    Laboriosam esse harum, fuga quasi commodi consequatur vel 
-                    nulla mollitia quia quidem atque possimus unde, exercitationem 
-                    voluptatem beatae excepturi nam iste tempore expedita eius ipsum illo.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, 
-                    nemo. Necessitatibus distinctio, laudantium eos ipsum impedit tempora eum.
-                </p>
-                <a href="#" class="btn">Learn More</a>
-            </div>
-        </div>
-    </section>
-    <!-- Review -->
-    <section class="reviews" id="reviews">
-        <div class="heading">
-            <span>Reviews</span>
-            <h1>Whats Our Customer Say</h1>
-        </div>
-        <div class="reviews-container">
-            <div class="box">
-                <div class="rev-img">
-                    <img src="img/rev1.jpg" alt="">
-                </div>
-                <h2>Someone Name</h2>
-                <div class="stars">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star-half' ></i>
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Explicabo nesciunt harum aliquam aperiam saepe eveniet 
-                    tempore debitis officia.
-                </p>
-            </div>
-
-            <div class="box">
-                <div class="rev-img">
-                    <img src="img/rev2.jpg" alt="">
-                </div>
-                <h2>Someone Name</h2>
-                <div class="stars">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star-half' ></i>
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Explicabo nesciunt harum aliquam aperiam saepe eveniet 
-                    tempore debitis officia.
-                </p>
-            </div>
-
-            <div class="box">
-                <div class="rev-img">
-                    <img src="img/rev3.jpg" alt="">
-                </div>
-                <h2>Someone Name</h2>
-                <div class="stars">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star-half' ></i>
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Explicabo nesciunt harum aliquam aperiam saepe eveniet 
-                    tempore debitis officia.
-                </p>
+                <p>Marca</p>
+                <h3>Nome do Carro</h3>
+                <label>Cor do Carro</label>
+                <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
+                <h4 class="btn">Disponível Hoje</h4>
             </div>
         </div>
     </section>
     <!-- Newsletter -->
     <section class="newsletter">
-        <h2>Subscribe To Newsletter</h2>
-        <div class="box">
-            <input type="text" placeholder="Enter your email...">
-            <a href="#" class="btn">Subscribe</a>
-        </div>
+        <h2>Obrigado por utilizar!</h2>
     </section>
     <!-- Copyright -->
     <div class="copyright">

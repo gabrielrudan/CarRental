@@ -1,3 +1,56 @@
-<%- include('head.ejs') %> 
+<!-- <%- include('foolder.ejs') %> -->
 
-<%- include('foolder.ejs') %> 
+<!DOCTYPE html>
+<html lang="'en">
+    <head>
+        <%- include('head_login.ejs') %>
+    </head>
+    <body>
+
+        <div class="login-container">
+            <div class="login-form">
+                <span class="title-form">Login</span>
+
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your email" required>
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="Enter your password" id="password" required>
+                        <i class='bx bx-key icon'></i>
+                        <i onclick="myFunction()" id="hide1" class='bx bx-low-vision showHidePw'></i>
+                        <i onclick="myFunction()" id="hide2" class='bx bx-show showHidePw'></i>
+                    </div>
+                    <div class="input-field button">
+                        <input type="button" value="Login Now">
+                    </div>
+                </form>
+                <div class="login-signup">
+                    <span class="text">Not a member?
+                        <a href="/sign-up" class="text signup-text">Sign-up Now</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function myFunction(){
+                const input = document.querySelector('#password');
+                const eye1 = document.getElementById('hide1');
+                const eye2 = document.getElementById('hide2');
+                if(input.type === 'password'){
+                     input.type = 'text';
+                     eye1.style.display = 'none';
+                     eye2.style.display = 'block';
+                }
+                else{
+                    input.type = 'password';
+                    eye1.style.display = 'block';
+                    eye2.style.display = 'none';
+                }
+            }
+        </script>
+
+    </body>
+</html>
