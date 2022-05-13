@@ -35,10 +35,14 @@ MongoClient.connect(connctionString, {
       const carsCollection = db.collection('cars')
 
       app.get('/', (req, res) => {
-        res.render('index');
+        db.collection('cars').find().toArray()
+          .then(results => {
+            res.render('index', {carros: results});
+          })
+          .catch(error => console.error(error))
       })
       
-      app.get('/show', (req, res)=>{
+      /*app.get('/show', (req, res)=>{
         db.collection('frases').find().toArray()
           .then(results => {
             res.render('show', {frases: results})
@@ -74,7 +78,7 @@ MongoClient.connect(connctionString, {
             console.log(result)
           })
           .catch(error => console.error(error))
-      })
+      })*/
       
       app.get('/sign-in', (req, res) => {
         res.render('login_usuario', {title: 'Página de login', pagina:'Página de login'});
