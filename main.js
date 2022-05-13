@@ -2,18 +2,18 @@ const express = require('express')
 const app = express()
 const port = 3000
 const path = require('path');
-//const cookieSession = require('cookie-session')
+const cookieSession = require('cookie-session')
 
 app.set('view engine', 'ejs');
 app.set('views', './view');
 app.use(express.static(path.join(__dirname, '/public')));
-/*app.use(cookieSession({
+app.use(cookieSession({
   name: 'session',
   // keys: ['c293x8b6234z82n938246bc2938x4zb234'],
   secret: 'c293x8b6234z82n938246bc2938x4zb234',
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
-}))*/
+}))
 
 
 
