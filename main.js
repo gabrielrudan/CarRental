@@ -17,7 +17,7 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
-
+app.use(bodyParser.json())
 
 /**Mongo */
 const MongoClient = require('mongodb').MongoClient
@@ -29,6 +29,10 @@ MongoClient.connect(connctionString, {
       console.log('Conexao Estabelecida')
       const db = client.db('car-rental-db')
       const frasesCollection = db.collection('frases')
+
+      const usuariosCollection = db.collection('usuarios')
+      const adminsCollection = db.collection('admins')
+      const carsCollection = db.collection('cars')
 
       app.get('/', (req, res) => {
         res.render('index');
@@ -48,6 +52,26 @@ MongoClient.connect(connctionString, {
           .then(result => {
             console.log(result)
             res.redirect('/')
+          })
+          .catch(error => console.error(error))
+      })
+
+      app.put('/show', (req, res) => {
+        console.log('app.put')
+        frasesCollection.findOneAndUpdate(
+          {nome: 'Yoda'},
+          {
+            $set:{
+              nome: req.body.name,
+              frase: req.body.quote
+            }
+          },
+          {
+            upsert: true
+          }
+        )
+          .then(result => {
+            console.log(result)
           })
           .catch(error => console.error(error))
       })
