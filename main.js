@@ -29,6 +29,10 @@ app.get('/sign-up', (req, res) => {
   res.render('cadastrar_usuario',{title: 'Página de Cadastrar', pagina:'Página de Cadastrar'});
 })
 
+app.get('/loja', (req, res) => {
+  res.render('loja_usuario',{title: 'Página da Loja', pagina:'Página da Loja'});
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })

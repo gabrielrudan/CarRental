@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('head.ejs') %>
+    <%- include('head_loja.ejs') %>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <a href="#" class="logo"><img src="img/jeep.png" alt=""></a>
+        <a href="#" class="logo"><img src="img/man.png" alt=""></a>
 
         <div class="bx bx-menu" id="menu-icon"></div>
 
         <ul class="navbar">
-            <li><a href="#home">Início</a></li>
-            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#loja">Loja</a></li>
+            <li><a href="/loja/aluguel">Meus Aluguéis</a></li>
+            <li><a href="/loja/conta">Minha Conta</a></li>
         </ul>
 
         <div class="header-btn">
-            <a href="sign-up" class="sign-up">Cadastrar-se</a>
-            <a href="sign-in" class="sign-in">Entrar</a>
+            <a href="/" class="sign-in">Sair</a>
         </div>
     </header>
-    <!-- Home -->
-    <section class="home" id="home">
-        <div class="text">
-            <h1><span>Procurando</span> por <br> um bom carro?</h1>
-            <p>
-                Aqui na <span>Car Rental</span> você encontrar os melhores modelos
-                de carros <br>para alugar. E o melhor? Sem sair de casa!
-            </p>
-        </div>
-    </section>
     <!-- Services -->
-    <section class="catalogo" id="catalogo">
+    <section class="loja" id="loja">
         <div class="heading">
-            <span>Loja</span>
-            <h1>Explore As Melhores Ofertas <br> Dos Melhores Locadores </h1>
+            <h1> Loja </h1>
+            <span>Confira as melhores ofertas abaixo</span>
         </div>
         <div class="services-container">
             <div class="box">
@@ -45,7 +35,7 @@
                 <h3>Nome do Carro</h3>
                 <label>Cor do Carro</label>
                 <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
-                <h4 class="btn">Disponível Hoje</h4>
+                <a href="/loja/alugar" class="btn">Alugar</a>
             </div>
 
             <div class="box">
@@ -56,7 +46,7 @@
                 <h3>Nome do Carro</h3>
                 <label>Cor do Carro</label>
                 <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
-                <h4 class="btn">Indisponível Hoje</h4>
+                <a href="/loja/alugar" class="btn">Alugar</a>
             </div>
 
             <div class="box">
@@ -67,7 +57,7 @@
                 <h3>Nome do Carro</h3>
                 <label>Cor do Carro</label>
                 <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
-                <h4 class="btn">Disponível Hoje</h4>
+                <a href="/loja/alugar" class="btn">Alugar</a>
             </div>
         </div>
     </section>

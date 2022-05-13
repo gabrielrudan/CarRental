@@ -39,7 +39,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
+    background: white;
     padding: 15px 100px;
 }
 .logo img{
@@ -92,18 +92,6 @@ header{
 }
 .header-btn .sign-up:hover{
     color: #fe5b3d;
-}
-.home{
-    background-image: url(img/CarWebsite.jpg);
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    background-repeat: no-repeat;
-    background-position: center right;
-    background-size: cover;
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(2, 1fr);
 }
 .text h1{
     font-size: 3.5rem;
@@ -168,11 +156,14 @@ header{
     text-align: center;
 }
 .heading span{
-    font-weight: 500;
+    font-weight: 450;
+    color: var(--text-color);
     text-transform: uppercase;
 }
 .heading h1{
+    margin-top: 2rem;
     font-size: 2rem;
+    color: #ffac38;
 }
 .ride-container{
     display: grid;
@@ -247,10 +238,13 @@ header{
 .services-container .box .btn{
     display: flex;
     justify-content: center;
-    background: #fff;
-    color: #474fa0;
+    background: #474fa0;
+    color: #FFF;
     padding: 10px;
     border-radius: 0.5rem;
+}
+.services-container .box .btn:hover{
+    background: var(--main-color);
 }
 .about-container{
     display: grid;
