@@ -37,7 +37,7 @@
             <h1>Explore As Melhores Ofertas <br> Dos Melhores Locadores </h1>
         </div>
         <div class="services-container">
-            <div class="box">
+            <!--<div class="box">
                 <div class="box-img">
                     <img src="img/car1.jpg" alt="">
                 </div>
@@ -68,7 +68,20 @@
                 <label>Cor do Carro</label>
                 <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
                 <h4 class="btn">Disponível Hoje</h4>
-            </div>
+            </div>-->
+
+            <% for(let i = 2; i < carros.length; i++) { %>
+                <div class="box">
+                    <!--<div class="box-img">
+                        <img src="img/car1.jpg" alt="">
+                    </div>-->
+                    <p>Marca: <%= carros[i].marca %> </p>
+                    <h3>Nome: <%= carros[i].nome %></h3>
+                    <label>Cor: <%= carros[i].cor %></label>
+                    <h2>R$ <%= carros[i].diaria %><span>/dia</span></h2>
+                    <h4 class="btn">Disponível Hoje</h4>
+                </div>
+            <% } %>  
         </div>
     </section>
     <%- include('foolder.ejs') %>

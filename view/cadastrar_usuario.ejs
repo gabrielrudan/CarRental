@@ -9,30 +9,30 @@
             <div class="login-form">
                 <span class="title-form">Cadastro</span>
 
-                <form action="#">
+                <form action="/cadastrar-usuario" method="post">
                     <div class="input-field">
-                        <input type="text" placeholder="Digite seu nome" required>
+                        <input type="text" name="nome-user" placeholder="Digite seu nome" required>
                         <i class='bx bxs-user'></i>
                     </div>
                     <span><br>Selecione sua data de nascimento</span>
                     <div class="input-field" style="margin-top: 0;">
-                        <input type="date" name="" id="" required>
+                        <input type="date" name="data-nascimento-user" id="" required>
                         <i class='bx bxs-calendar'></i>
                     </div>
                     <span><br>Selecione seu gênero</span>
                     <div class="input-field" style="margin-top: 0;">
-                        <select name="" id="">
+                        <select name="genero-user" id="">
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
                             <option value="outro">Outro</option>
                         </select>
                     </div>
                     <div class="input-field">
-                        <input type="tel" placeholder="Digite seu telefone" required>
+                        <input type="tel" name="telefone-user" placeholder="Digite seu telefone" required>
                         <i class='bx bxs-phone'></i>
                     </div>
                     <div class="input-field">
-                        <input type="email" placeholder="Digite seu email" required>
+                        <input type="email" name="email-user" placeholder="Digite seu email" required>
                         <i class='bx bx-envelope'></i>
                     </div>
                     <div class="input-field">
@@ -42,12 +42,12 @@
                         <i onclick="myFunction()" id="hide2" class='bx bx-show showHidePw'></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" onchange="myFunction2()" placeholder="Confirme sua senha" id="password2" required>
+                        <input type="password" name="senha-user" onchange="myFunction2()" placeholder="Confirme sua senha" id="password2" required>
                         <i class='bx bx-key icon'></i>
                     </div>
                     <span class="erro-pass">Erro - Confirmação de senha não corresponde!</span>
                     <div class="input-field button">
-                        <input type="button" value="Cadastrar-se">
+                        <button type="submit"><input type="button" value="Cadastrar-se"></button>
                     </div>
                 </form>
                 <div class="login-signup">
