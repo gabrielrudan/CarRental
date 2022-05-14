@@ -87,6 +87,15 @@ MongoClient.connect(connctionString, {
       app.get('/sign-up', (req, res) => {
         res.render('cadastrar_usuario',{title: 'Página de Cadastrar', pagina:'Página de Cadastrar'});
       })
+
+      app.post('/cadastrar-usuario', (req, res) => {
+        usuariosCollection.insertOne(req.body)
+        .then(results => {
+          console.log(results)
+          res.redirect('/')
+        })
+        .catch(error => console.error(error))
+      })
       
       app.listen(port, () => {
         console.log(`Example app listening on port ${port}`);
