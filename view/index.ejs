@@ -70,15 +70,15 @@
                 <h4 class="btn">Disponível Hoje</h4>
             </div>-->
 
-            <% for(let i = 0; i < carros.lenght; i++) { %>
+            <% for(let i = 2; i < carros.length; i++) { %>
                 <div class="box">
                     <!--<div class="box-img">
                         <img src="img/car1.jpg" alt="">
                     </div>-->
                     <p>Marca: <%= carros[i].marca %> </p>
-                    <h3>Nome do Carro</h3>
-                    <label>Cor do Carro</label>
-                    <h2>R$ 58500<span> ou </span>R$ 358<span>/dia</span></h2>
+                    <h3>Nome: <%= carros[i].nome %></h3>
+                    <label>Cor: <%= carros[i].cor %></label>
+                    <h2>R$ <%= carros[i].diaria %><span>/dia</span></h2>
                     <h4 class="btn">Disponível Hoje</h4>
                 </div>
             <% } %>  
