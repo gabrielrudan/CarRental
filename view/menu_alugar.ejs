@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head_alugar.ejs') %>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><img src="img/man.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <div class="header-btn">
+            <a href="/loja" class="sign-in">Cancelar</a>
+        </div>
+    </header>
+        <section id="cardetails">
+            <div class="single-car-image">
+                <div class="box">
+                    <img src="img/car1.jpg" width="100%" id="MainImg" alt="">
+                </div>
+            </div>
+    
+            <div class="single-car-details">
+                <p>Marca</p>
+                <h3>Nome do Carro</h3>
+                <label>Cor do Carro</label>
+                <h2>R$ 358<span>/dia</span></h2>
+                <h4 class="btn">Indisponível em:</h4>
+                <li>dd/mm/aaaa</li>
+                <li>dd/mm/aaaa</li>
+                <li>dd/mm/aaaa</li>
+            </div>
+        </section>
+            <div class="form-container">
+                <form action="">
+                    <div class="input-box">
+                        <span>Dia do Aluguel<br></span>
+                        <input type="date" name="" id="">
+                    </div>
+                    <div class="input-box">
+                        <span>Dia do Retorno<br></span>
+                        <input type="date" name="" id="">
+                    </div>
+                    <h2><span>Valor Total:<br></span>R$ 54260</h2>
+                    <span>Forma de pagamento</span>
+                    <select name="" id="">
+                        <option value="cartao">Cartão</option>
+                        <option value="boleto">Boleto</option>
+                        <option value="pix">Pix</option>
+                    </select>
+                    <input type="submit" value="Alugar" class="btn">
+                </form>
+            </div>
+
+</body>
+</html>

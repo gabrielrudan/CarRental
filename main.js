@@ -33,6 +33,10 @@ app.get('/loja', (req, res) => {
   res.render('loja_usuario',{title: 'Página da Loja', pagina:'Página da Loja'});
 })
 
+app.get('/loja-alugar', (req, res) => {
+  res.render('menu_alugar',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
