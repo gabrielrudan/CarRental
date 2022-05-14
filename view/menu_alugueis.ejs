@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head_alugueis.ejs') %>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><img src="img/man.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="/loja">Loja</a></li>
+            <li><a href="/loja-aluguel">Meus Aluguéis</a></li>
+            <li><a href="/loja-conta">Minha Conta</a></li>
+        </ul>
+
+        <div class="header-btn">
+            <a href="/" class="sign-in">Sair</a>
+        </div>
+    </header>
+    <!-- cart items details-->
+    <section class="loja" id="loja">
+        <div class="heading">
+            <h1> Meus Aluguéis </h1>
+            <span>Confira todos os seus aluguéis abaixo</span>
+        </div>
+        <div class="small-container cart-page">
+            <table>
+                <tr>
+                    <th>Carro</th>
+                    <th>Dia do Aluguel</th>
+                    <th>Diárias</th>
+                    <th>Valor Total</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="img/car1.jpg" alt="">
+                            <div class="text">
+                                <p style="margin-bottom: 2px;">Nome do Carro</p>
+                                <small>Marca</small>
+                                <small>Cor</small>
+                                <small>R$ 432/dia</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>dd/mm/aaaa</td>
+                    <td>1</td>
+                    <td>R$ 52719</td>
+                    <td>Aguardando confirmação</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="img/car2.jpg" alt="">
+                            <div class="text">
+                                <p style="margin-bottom: 2px;">Nome do Carro</p>
+                                <small>Marca</small>
+                                <small>Cor</small>
+                                <small>R$ 432/dia</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>dd/mm/aaaa</td>
+                    <td>1</td>
+                    <td>R$ 52719</td>
+                    <td>Aguardando confirmação</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="img/car3.jpg" alt="">
+                            <div class="text">
+                                <p style="margin-bottom: 2px;">Nome do Carro</p>
+                                <small>Marca</small>
+                                <small>Cor</small>
+                                <small>R$ 432/dia</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>dd/mm/aaaa</td>
+                    <td>1</td>
+                    <td>R$ 52719</td>
+                    <td>Aguardando confirmação</td>
+                </tr>
+            </table>
+    
+        </div>
+    </section>
+    <%- include('foolder.ejs') %>
+
+</body>
+</html>

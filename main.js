@@ -99,9 +99,9 @@ MongoClient.connect(connctionString, {
         .catch(error => console.error(error))
       })
       
-      app.listen(port, () => {
-        console.log(`Example app listening on port ${port}`);
-      })
+     // app.listen(port, () => {
+     //   console.log(`Example app listening on port ${port}`);
+     // })
 
       app.get('/loja', (req, res) => {
         db.collection('cars').find().toArray()
@@ -116,6 +116,14 @@ MongoClient.connect(connctionString, {
 
 app.get('/loja-alugar', (req, res) => {
   res.render('menu_alugar',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+})
+
+app.get('/loja-aluguel', (req, res) => {
+  res.render('menu_alugueis',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+})
+
+app.get('/loja-conta', (req, res) => {
+  res.render('menu_conta',{title: 'Página de Alugar', pagina:'Página de Alugar'});
 })
 
 app.listen(port, () => {
