@@ -92,6 +92,9 @@ MongoClient.connect(connctionString, {
         console.log(`Example app listening on port ${port}`);
       })
 
+      app.get('/loja', (req, res) => {
+        res.render('loja_usuario',{title: 'Página da Loja', pagina:'Página da Loja'});
+      })
 
     })
     .catch(error => console.error(error))
