@@ -89,6 +89,7 @@ MongoClient.connect(connctionString, {
       })
 
       app.post('/cadastrar-usuario', (req, res) => {
+        /**Pra fazer funcionar os campos que vão ser salvos no banco tem que ter o atributo name */
         usuariosCollection.insertOne(req.body)
         .then(results => {
           console.log(results)
@@ -102,7 +103,11 @@ MongoClient.connect(connctionString, {
       })
 
       app.get('/loja', (req, res) => {
-        res.render('loja_usuario',{title: 'Página da Loja', pagina:'Página da Loja'});
+        db.collection('cars').find().toArray()
+          .then(results => {
+            res.render('loja_usuario',{title: 'Página da Loja', pagina:'Página da Loja', carros: results});
+          })
+          .catch(error => console.error(error))
       })
 
     })
