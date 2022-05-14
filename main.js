@@ -33,6 +33,7 @@ MongoClient.connect(connctionString, {
       const usuariosCollection = db.collection('usuarios')
       const adminsCollection = db.collection('admins')
       const carsCollection = db.collection('cars')
+      const alugueisCollection = db.collection('alugueis')
 
       app.get('/', (req, res) => {
         db.collection('cars').find().toArray()
