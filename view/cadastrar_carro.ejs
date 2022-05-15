@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="'en">
+    <head>
+        <%- include('head_cad.ejs') %>
+    </head>
+    <body>
+
+        <div class="login-container">
+            <div class="login-form">
+                <span class="title-form">Cadastro de Carro</span>
+
+                <form action="" method="post">
+                    <div class="input-field">
+                        <input type="file" name="" id="">
+                        <i class='bx bx-photo-album'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="" placeholder="Digite o nome do carro" required>
+                        <i class='bx bx-car'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="" placeholder="Digite a marca do carro" required>
+                        <i class='bx bx-bookmark'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="" placeholder="Digite a cor do carro" required>
+                        <i class='bx bx-palette' ></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" name="" placeholder="Digite o valor do carro" required>
+                        <i class='bx bx-purchase-tag-alt'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" name="" placeholder="Digite o preço da diária" required>
+                        <i class='bx bx-money-withdraw'></i>
+                    </div>
+                    <div class="input-field button">
+                        <button type="submit"><input type="button" value="Cadastrar"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function myFunction(){
+                const input = document.querySelector('#password');
+                const input2 = document.querySelector('#password2');
+                const eye1 = document.getElementById('hide1');
+                const eye2 = document.getElementById('hide2');
+                if(input.type === 'password'){
+                     input.type = 'text';
+                     input2.type = 'text';
+                     eye1.style.display = 'none';
+                     eye2.style.display = 'block';
+                }
+                else{
+                    input.type = 'password';
+                    input2.type = 'password';
+                    eye1.style.display = 'block';
+                    eye2.style.display = 'none';
+                }
+            }
+        </script>
+        <script>
+            function myFunction2(){
+                const input = document.querySelector('#password');
+                const input2 = document.querySelector('#password2');
+                const error = document.querySelector('.erro-pass');
+                if(input == input2){
+                    error.style.display = 'none';
+                }
+                else{
+                    error.style.display = 'block';
+                }
+            }
+        </script>
+
+    </body>
+</html>

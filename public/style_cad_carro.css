@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --main-color: #fe5b3d;
+    --second-color: #ffac38;
+    --text-color: #444;
+    --gradient: linear-gradient(#fe5b3d, #ffac38);
+}
+html::-webkit-scrollbar{
+    width: 0.5rem;
+}
+html::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+html::-webkit-scrollbar-thumb{
+    background-color: #ffac38;
+    border-radius: 5rem;
+}
+body{
+    background: var(--gradient);
+    padding: 0 10px;
+}
+.login-container{
+    max-width: 500px;
+    width: 100%;
+    background: #FFF;
+    margin: 20px auto;
+    padding: 30px;
+    box-shadow: 1px 4px 41px rgb(0, 0, 0, 0.1);
+    border-radius: 1rem;
+}
+.login-container .login-form{
+    padding: 30px;
+}
+.login-container .login-form .title-form{
+    position: relative;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+.login-form .title-form::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: #fe5b3d;
+    border-radius: 25px;
+}
+.login-form .input-field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 15px;
+}
+.input-field input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 30px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+span{
+    color: #444;
+}
+.input-field input:is(:focus, :valid){
+    border-bottom-color: #fe5b3d;
+}
+.input-field i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 20px;
+}
+.input-field input:is(:focus, :valid) ~ i{
+    color: #fe5b3d;
+}
+.input-field i.icon{
+    left: 0;
+}
+.input-field i.showHidePw{
+    cursor: pointer;
+    right: 0;
+}
+.login-form .text{
+    color: #444;
+    font-size: 14px;
+}
+.login-form a.text{
+    color: #fe5b3d;
+    text-decoration: none;
+}
+.login-form a:hover{
+    text-decoration: underline;
+}
+.login-form .button{
+    margin-top: 35px;
+}
+.login-form .button input{
+    border: none;
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #fe5b3d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.button input:hover{
+    background: #e95237;
+}
+.login-form .login-signup{
+    margin-top: 20px;
+}
+#hide2{
+    display: none;
+}
+.erro-pass{
+    position: center;
+    color: red;
+    display: none;
+}

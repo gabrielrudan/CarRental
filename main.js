@@ -138,6 +138,10 @@ app.get('/admin-usuario', (req, res) => {
   res.render('admin_usuarios',{title: 'Página de Usuários do Admin', pagina:'Página de Usuários do Admin'});
 })
 
+app.get('/admin-add-carro', (req, res) => {
+  res.render('cadastrar_carro',{title: 'Página de Cadastrar Carro do Admin', pagina:'Página de Cadastrar Carro do Admin'});
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
