@@ -130,6 +130,10 @@ app.get('/admin-loja', (req, res) => {
   res.render('admin_loja',{title: 'Página da Loja do Admin', pagina:'Página da Loja do Admin'});
 })
 
+app.get('/admin-aluguel', (req, res) => {
+  res.render('admin_alugueis',{title: 'Página de Aluguéis do Admin', pagina:'Página de Aluguéis do Admin'});
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })

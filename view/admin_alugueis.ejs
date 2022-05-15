@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head_admin_alugueis.ejs') %>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><img src="img/avatar.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="/admin-loja">Loja</a></li>
+            <li><a href="/admin-aluguel">Aluguéis</a></li>
+            <li><a href="/admin-usuario">Usuários</a></li>
+        </ul>
+
+        <div class="header-btn">
+            <a href="/" class="sign-in">Sair</a>
+        </div>
+    </header>
+    <!-- cart items details-->
+    <section class="loja" id="loja">
+        <div class="heading">
+            <h1> Aluguéis </h1>
+        </div>
+        <div class="small-container cart-page">
+            <table>
+                <tr>
+                    <th>Id do Aluguel</th>
+                    <th>Nome do Cliente</th>
+                    <th>Valor Total</th>
+                    <th>Status do Pedido</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td><a onclick="myFunction()" class="button">1</a></td>
+                    <td>Gabriel Rudan Sales Matos</td>
+                    <td>R$ 52719</td>
+                    <td>Aguardando confirmação</td>
+                    <td><a class="button">Aceitar </a><a class="button">Rejeitar</a></td>
+                </tr>
+                <tr>
+                    <td><a onclick="myFunction()" class="button">2</a></td>
+                    <td>Letícia Torres Pereira</td>
+                    <td>R$ 52719</td>
+                    <td>Aguardando confirmação</td>
+                    <td><a class="button">Aceitar </a><a class="button">Rejeitar</a></td>
+                </tr>
+                <tr>
+                    <td><a onclick="myFunction()" class="button">3</a></td>
+                    <td>Raylander Marques Melo</td>
+                    <td>R$ 52719</td>
+                    <td>Aguardando confirmação</td>
+                    <td><a class="button">Aceitar </a><a class="button">Rejeitar</a></td>
+                </tr>
+                <tr>
+                    <td><a onclick="myFunction()" class="button">4</a></td>
+                    <td>Dirlia Vieira Sousa</td>
+                    <td>R$ 52719</td>
+                    <td>Aguardando confirmação</td>
+                    <td><a class="button">Aceitar </a><a class="button">Rejeitar</a></td>
+                </tr>
+            </table>
+    
+        </div>
+    </section>
+
+    <!-- Modal Section -->
+    <div class="bg-modal" id="bg-modal">
+        <div class="modal-content">
+            <div class="close"><i class='bx bx-x-circle' onclick="myFunction2()"></i></div>
+            <h2>Mais Informações</h2>
+            <form action="">
+                <td><img src="img/car1.jpg" alt="" style="width: 40%;"><br></td>
+                <td>Marca do Carro<br></td>
+                <td>Nome do carro<br></td>
+                <td>Cor do Carro<br></td>
+                <td>Valor do Carro<br></td>
+                <td>Preço da Diária<br></td>
+                <td>Data de Início: <br></td>
+                <td>Data de Fim: </td>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'flex';
+            }
+            function myFunction2(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'none';
+            }
+    </script>
+
+    <%- include('foolder.ejs') %>
+
+</body>
+</html>
