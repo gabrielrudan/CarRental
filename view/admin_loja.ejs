@@ -36,8 +36,8 @@
                     <label>Cor:</label>
                     <h2>R$ 2671<span>/dia</span></h2>
                     <label>Disponível Hoje</label>
-                    <a href="/admin-loja-edit">Editar</a>
-                    <a href="/admin-loja-delete">Remover</a>
+                    <a onclick="myFunction()" class="button">Editar</a>
+                    <a class="button">Remover</a>
                 </div>
                 <div class="box">
                     <div class="box-img">
@@ -48,8 +48,8 @@
                     <label>Cor:</label>
                     <h2>R$ 2671<span>/dia</span></h2>
                     <label>Disponível Hoje</label>
-                    <a href="/admin-loja-edit">Editar</a>
-                    <a href="/admin-loja-delete">Remover</a>
+                    <a onclick="myFunction()" class="button">Editar</a>
+                    <a class="button">Remover</a>
                 </div>
                 <div class="box">
                     <div class="box-img">
@@ -60,11 +60,41 @@
                     <label>Cor:</label>
                     <h2>R$ 2671<span>/dia</span></h2>
                     <label>Disponível Hoje</label>
-                    <a href="/admin-loja-edit">Editar</a>
-                    <a href="/admin-loja-delete">Remover</a>
+                    <a onclick="myFunction()" class="button">Editar</a>
+                    <a class="button">Remover</a>
                 </div>
         </div>
     </section>
+
+    <!-- Modal Section -->
+    <div class="bg-modal" id="bg-modal">
+        <div class="modal-content">
+            <div class="close"><i class='bx bx-x-circle' onclick="myFunction2()"></i></div>
+            <h2>Editar Carro</h2>
+            <form action="">
+                <label class="modal-label">Editar Foto do Carro:</label>
+                <input type="file" name="" id="">
+                <input type="text" src="" alt="" placeholder="Editar nome do carro">
+                <input type="text" src="" alt="" placeholder="Editar marca do carro">
+                <input type="text" src="" alt="" placeholder="Editar cor do carro">
+                <input type="number" src="" alt="" placeholder="Editar valor do carro">
+                <input type="number" src="" alt="" placeholder="Editar preço da diária">
+                <a href="" class="button">Editar</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'flex';
+            }
+            function myFunction2(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'none';
+            }
+    </script>
+
     <%- include('foolder.ejs') %>
 
 </body>
