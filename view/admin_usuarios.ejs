@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head_admin_usuarios.ejs') %>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><img src="img/avatar.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="/admin-loja">Loja</a></li>
+            <li><a href="/admin-aluguel">Aluguéis</a></li>
+            <li><a href="/admin-usuario">Usuários</a></li>
+        </ul>
+
+        <div class="header-btn">
+            <a href="/" class="sign-in">Sair</a>
+        </div>
+    </header>
+    <!-- cart items details-->
+    <section class="loja" id="loja">
+        <div class="heading">
+            <h1> Usuários </h1>
+            <a href="/sign-up" class="sign-in">Adicionar Usuário</a>
+        </div>
+        <div class="small-container cart-page">
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Senha</th>
+                    <th>Editar</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>Gabriel Rudan Sales Matos</td>
+                    <td>gabrielrudan@gmail.com</td>
+                    <td>(88)9999-9999</td>
+                    <td>kjdsjskjdkj</td>
+                    <td><a onclick="myFunction()" class="button">Editar</a></td>
+                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
+                </tr>
+                <tr>
+                    <td>Letícia Torres Pereira</td>
+                    <td>leticiatorres@gmail.com</td>
+                    <td>(88)9999-9999</td>
+                    <td>bcxbxnbn</td>
+                    <td><a onclick="myFunction()" class="button">Editar</a></td>
+                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
+                </tr>
+                <tr>
+                    <td>Raylander Marques Melo</td>
+                    <td>raylandermarques@gmail.com</td>
+                    <td>(88)9999-9999</td>
+                    <td>lakslajos</td>
+                    <td><a onclick="myFunction()" class="button">Editar</a></td>
+                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
+                </tr>
+                <tr>
+                    <td>Dirlia Vieira Sousa</td>
+                    <td>dirliavieira@gmail.com</td>
+                    <td>(88)9999-9999</td>
+                    <td>wrwtqtwyq</td>
+                    <td><a onclick="myFunction()" class="button">Editar</a></td>
+                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
+                </tr>
+            </table>
+    
+        </div>
+    </section>
+
+    <!-- Modal Section -->
+    <div class="bg-modal" id="bg-modal">
+        <div class="modal-content">
+            <div class="close"><i class='bx bx-x-circle' onclick="myFunction2()"></i></div>
+            <h2>Editar Usuário</h2>
+            <form action="">
+                <input type="text" name="nome-user" placeholder="Editar nome">
+                <label class="modal-label">Editar Data de Nascimento</label>
+                <input type="date" name="data-nascimento-user" id="">
+                <label class="modal-label">Editar Gênero</label>
+                <select name="genero-user" id="">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+                <input type="tel" name="telefone-user" placeholder="Editar telefone">
+                <input type="email" name="email-user" placeholder="Editar email">
+                <input type="password" placeholder="Editar senha" id="password" required>
+                <a href="" class="button">Editar</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'flex';
+            }
+            function myFunction2(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'none';
+            }
+    </script>
+
+    <%- include('foolder.ejs') %>
+
+</body>
+</html>
