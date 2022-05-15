@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head_admin_loja.ejs') %>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><img src="img/avatar.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#loja">Loja</a></li>
+            <li><a href="/admin-aluguel">Aluguéis</a></li>
+            <li><a href="/admin-usuario">Usuários</a></li>
+        </ul>
+
+        <div class="header-btn">
+            <a href="/" class="sign-in">Sair</a>
+        </div>
+    </header>
+    <!-- Services -->
+    <section class="loja" id="loja">
+        <div class="heading">
+            <h1> Loja </h1>
+            <a href="/admin-loja-add" class="sign-in">Adicionar Carro</a>
+        </div>
+        <div class="services-container">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car1.jpg" alt="">
+                    </div>
+                    <p>Marca: </p>
+                    <h3>Nome:</h3>
+                    <label>Cor:</label>
+                    <h2>R$ 2671<span>/dia</span></h2>
+                    <label>Disponível Hoje</label>
+                    <a href="/admin-loja-edit">Editar</a>
+                    <a href="/admin-loja-delete">Remover</a>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car2.jpg" alt="">
+                    </div>
+                    <p>Marca: </p>
+                    <h3>Nome:</h3>
+                    <label>Cor:</label>
+                    <h2>R$ 2671<span>/dia</span></h2>
+                    <label>Disponível Hoje</label>
+                    <a href="/admin-loja-edit">Editar</a>
+                    <a href="/admin-loja-delete">Remover</a>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car3.jpg" alt="">
+                    </div>
+                    <p>Marca: </p>
+                    <h3>Nome:</h3>
+                    <label>Cor:</label>
+                    <h2>R$ 2671<span>/dia</span></h2>
+                    <label>Disponível Hoje</label>
+                    <a href="/admin-loja-edit">Editar</a>
+                    <a href="/admin-loja-delete">Remover</a>
+                </div>
+        </div>
+    </section>
+    <%- include('foolder.ejs') %>
+
+</body>
+</html>
