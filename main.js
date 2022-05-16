@@ -65,15 +65,15 @@ MongoClient.connect(connctionString, {
       const carsCollection = db.collection('cars')
       const alugueisCollection = db.collection('alugueis')
 
-      app.use((req,res,next) =>{
-        const { userId } = req.session;
-        if(userId){
-          res.locals.user = usuariosCollection.find(
-            user =>  user._id === userId
-          )
-        }
-        next();
-      })
+      // app.use((req,res,next) =>{
+      //   const { userId } = req.session;
+      //   if(userId){
+      //     res.locals.user = usuariosCollection.find(
+      //       user =>  user._id === userId
+      //     )
+      //   }
+      //   next();
+      // })
 
       app.get('/', (req, res) => {
         db.collection('cars').find().toArray()
@@ -156,7 +156,7 @@ MongoClient.connect(connctionString, {
           .catch(error => console.error(error))
       })
 
-      app.post('/cadastrar-usuario',redirectHome, (req, res) => {
+      app.post('/cadastrar-usuario', (req, res) => {
         /**Pra fazer funcionar os campos que vão ser salvos no banco tem que ter o atributo name */
         usuariosCollection.insertOne(req.body)
         .then(results => {
