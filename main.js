@@ -130,7 +130,7 @@ MongoClient.connect(connctionString, {
       })
 
       app.post('/segin-in', (req, res) => {
-        var cont = 0;
+        let cont = 0;
         usuariosCollection.find().toArray()
           .then(results => {
             for(let i = 0; i<results.length; i++){
@@ -157,12 +157,25 @@ MongoClient.connect(connctionString, {
 
       app.post('/cadastrar-usuario', (req, res) => {
         /**Pra fazer funcionar os campos que vão ser salvos no banco tem que ter o atributo name */
+        let cont2 = 0;
+        usuariosCollection.find().toArray()
+          .then(results => {
+            for(let i = 0; i<results.length; i++){
+              if(req.body.email_user == results[i].email_user ){
+                cont2 = 1;
+                res.render('cadastrar_usuario _alert', {alerta: 'Email já cadastrado!'});
+              }
+            }
+          })
+          .catch(error => console.error(error))
+        if(cont2 == 0){
         usuariosCollection.insertOne(req.body)
         .then(results => {
           console.log(results)
           res.redirect('/')
         })
         .catch(error => console.error(error))
+        }
       })
       
       // app.listen(port, () => {
