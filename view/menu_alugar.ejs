@@ -22,10 +22,10 @@
             </div>
     
             <div class="single-car-details">
-                <p>Marca</p>
-                <h3>Nome do Carro</h3>
-                <label>Cor do Carro</label>
-                <h2>R$ 358<span>/dia</span></h2>
+                <p><%= marca %> </p>
+                <h3><%= nome %> </h3>
+                <label><%= cor %> </label>
+                <h2>R$ <%= diaria %> <span>/dia</span></h2>
                 <h4 class="btn">Indisponível em:</h4>
                 <li>dd/mm/aaaa</li>
                 <li>dd/mm/aaaa</li>
@@ -42,7 +42,6 @@
                         <span>Dia do Retorno<br></span>
                         <input type="date" name="" id="">
                     </div>
-                    <h2><span>Valor Total:<br></span>R$ 54260</h2>
                     <span>Forma de pagamento</span>
                     <select name="" id="">
                         <option value="cartao">Cartão</option>

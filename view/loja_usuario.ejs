@@ -27,7 +27,7 @@
             <span>Confira as melhores ofertas abaixo</span>
         </div>
         <div class="services-container">
-            <% for(let i = 2; i < carros.length; i++) {%>
+            <% for(let i = 0; i < carros.length; i++) {%>
                 <div class="box">
                     <!--<div class="box-img">
                         <img src="img/car3.jpg" alt="">
@@ -36,7 +36,7 @@
                     <h3>Nome: <%= carros[i].nome %></h3>
                     <label>Cor: <%= carros[i].cor %></label>
                     <h2>R$ <%= carros[i].diaria %><span>/dia</span></h2>
-                    <a href="/loja-alugar" class="btn">Alugar</a>
+                    <a href="/loja-alugar?cod=<%= carros[i]._id %>" class="btn">Alugar</a>
                 </div>
             <% } %>
         </div>

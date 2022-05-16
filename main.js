@@ -6,7 +6,7 @@ const port = 3000;
 const user = "";
 const cookieSession = require('cookie-session')
 const cookieParser = require("cookie-parser");
-var session;
+var sessionUser, sessionAdm;
 const oneDay = 1000 * 60 * 60 * 24;
 
 app.set('view engine', 'ejs');
@@ -51,8 +51,17 @@ MongoClient.connect(connctionString, {
 
       /**Sessão */
       const redirectLogin = (req,res,next) =>{
-        session = req.session;
-        if(!session.userId){
+        sessionUser = req.session;
+        if(!sessionUser.userId){
+          res.render('login_usuario_alert', {alerta: "Falha no login, logar novamente!"});
+        }else{
+          next();
+        }
+      }
+
+      const redirectLoginAdm = (req,res,next) =>{
+        sessionAdm = req.session;
+        if(!sessionAdm.userIdAdm){
           res.render('login_usuario_alert', {alerta: "Falha no login, logar novamente!"});
         }else{
           next();
@@ -60,8 +69,8 @@ MongoClient.connect(connctionString, {
       }
 
       const redirectHomeUsu = (req,res,next) =>{
-        session = req.session;
-        if(session.userId){
+        sessionUser = req.session;
+        if(sessionUser.userId){
           carsCollection.find().toArray()
           .then(results => {
             res.render('loja_usuario',{title: 'Página da Loja', pagina:'Página da Loja', carros: results});
@@ -133,14 +142,28 @@ MongoClient.connect(connctionString, {
             for(let i = 0; i<results.length; i++){
               if(req.body.email == results[i].email_user && req.body.senha == results[i].senha_user){
                 cont = 1;
-                session = req.session;
-                session.userId = req.body.email;
+                sessionUser = req.session;
+                sessionUser.userId = req.body.email;
                 console.log(req.session)
                 res.redirect('loja_usuario');
               }
             }
             if(cont == 0){
-              res.render('login_usuario_alert', {alerta: "Usuário inválido"});
+              adminsCollection.find().toArray()
+              .then(results => {
+                for(let i = 0; i<results.length; i++){
+                  if(req.body.email == results[i].email_user && req.body.senha == results[i].senha_user){
+                    cont = 1;
+                    sessionAdm = req.session;
+                    sessionAdm.userIdAdm = req.body.email;
+                    console.log(req.session)
+                    res.redirect('admin-loja');
+                  }
+                }
+                if(cont == 0){
+                  res.render('login_usuario_alert', {alerta: "Usuário inválido"});
+                }
+              })
             }
           })
           .catch(error => console.error(error))
@@ -200,12 +223,25 @@ MongoClient.connect(connctionString, {
           .catch(error => console.error(error))
       })
 
+      app.get('/loja-alugar',redirectLogin, (req, res) => {
+        carsCollection.find().toArray()
+        .then(results => {
+        for(let i=0 ; i<results.length; i++){
+          if(req.query.cod == results[i]._id){
+            res.render('menu_alugar',{marca: results[i].marca, nome: results[i].nome, cor: results[i].cor, diaria: results[i].diaria});
+          }
+        }
+        })
+      })
+
+      app.get('/admin-loja',redirectLoginAdm, (req, res) => {
+        res.render('admin_loja');
+      })
+
     })
     .catch(error => console.error(error))
 
-      app.get('/loja-alugar', (req, res) => {
-        res.render('menu_alugar',{title: 'Página de Alugar', pagina:'Página de Alugar'});
-      })
+      
 
       app.get('/loja-aluguel', (req, res) => {
         res.render('menu_alugueis',{title: 'Página de Alugar', pagina:'Página de Alugar'});
@@ -213,10 +249,6 @@ MongoClient.connect(connctionString, {
 
       app.get('/loja-conta', (req, res) => {
         res.render('menu_conta',{title: 'Página de Alugar', pagina:'Página de Alugar'});
-      })
-
-      app.get('/admin-loja', (req, res) => {
-        res.render('admin_loja',{title: 'Página da Loja do Admin', pagina:'Página da Loja do Admin'});
       })
 
       app.get('/admin-aluguel', (req, res) => {
