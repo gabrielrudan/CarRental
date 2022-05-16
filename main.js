@@ -206,14 +206,6 @@ MongoClient.connect(connctionString, {
         .catch(error => console.error(error))
         }
       })
-      
-      // app.listen(port, () => {
-      //   console.log(`Example app listening on port ${port}`);
-      // })
-     // app.listen(port, () => {
-     //   console.log(`Example app listening on port ${port}`);
-     // })
-
 
       app.get('/loja', (req, res) => {
         db.collection('cars').find().toArray()
@@ -235,13 +227,12 @@ MongoClient.connect(connctionString, {
       })
 
       app.get('/admin-loja',redirectLoginAdm, (req, res) => {
-        res.render('admin_loja');
+        carsCollection.find().toArray()
+        .then(results => {
+          res.render('admin_loja',{title: 'Página da Loja do Admin', pagina:'Página da Loja do Admin', carros: results});
+        })
+        .catch(error => console.error(error))
       })
-
-    })
-    .catch(error => console.error(error))
-
-      
 
       app.get('/loja-aluguel', (req, res) => {
         res.render('menu_alugueis',{title: 'Página de Alugar', pagina:'Página de Alugar'});
@@ -267,12 +258,18 @@ MongoClient.connect(connctionString, {
         carsCollection.insertOne(req.body)
         .then(results => {
           console.log(results)
-          res.redirect('/loja')
+          res.redirect('/admin-loja')
         })
         .catch(error => console.error(error))
       })
+
+      app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`);
+      })
+
+    })
+    .catch(error => console.error(error))
+
+      
       
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-})
