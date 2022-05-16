@@ -3,47 +3,31 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const port = 3000;
-const session = require('express-session');
-const flash = require('connect-flash');
-const { nextTick } = require('process');
-const { url } = require('inspector');
+const user = "";
+const cookieSession = require('cookie-session')
+const cookieParser = require("cookie-parser");
+var session;
+const oneDay = 1000 * 60 * 60 * 24;
 
 app.set('view engine', 'ejs');
 app.set('views', './view');
 
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, '/public')));
-// app.use(session({
-//   name: 'sid',
-//   resave: false,
-//   saveUninitialized: false,
-//   secret: 'session/secret',
-//   cookie:{
-//     maxAge: 1000*60*60*2,
-//     sameSite: true,
-//   }
-// }))
+app.use(cookieSession({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false
+}))
+
+
+
 app.use(bodyParser.json())
 /**Mongo */
 const MongoClient = require('mongodb').MongoClient
 const connctionString = 'mongodb+srv://leh-torres:sweetland@cluster0.uhidp.mongodb.net/car-rental-db?retryWrites=true&w=majority'
-
-// /**Sessão */
-// const redirectLogin = (req,res,next) =>{
-//   if(!req.session.userId){
-//     res.render('login_usuario');
-//   }else{
-//     next();
-//   }
-// }
-
-// const redirectHomeUsu = (req,res,next) =>{
-//   if(req.session.userId){
-//     res.render('loja_usuario');
-//   }else{
-//     next();
-//   }
-// }
 
 // const redirectHome = (req,res,next) =>{
 //   if(req.session.userId){
@@ -65,15 +49,28 @@ MongoClient.connect(connctionString, {
       const carsCollection = db.collection('cars')
       const alugueisCollection = db.collection('alugueis')
 
-      // app.use((req,res,next) =>{
-      //   const { userId } = req.session;
-      //   if(userId){
-      //     res.locals.user = usuariosCollection.find(
-      //       user =>  user._id === userId
-      //     )
-      //   }
-      //   next();
-      // })
+      /**Sessão */
+      const redirectLogin = (req,res,next) =>{
+        session = req.session;
+        if(!session.userId){
+          res.render('login_usuario_alert', {alerta: "Falha no login, logar novamente!"});
+        }else{
+          next();
+        }
+      }
+
+      const redirectHomeUsu = (req,res,next) =>{
+        session = req.session;
+        if(session.userId){
+          carsCollection.find().toArray()
+          .then(results => {
+            res.render('loja_usuario',{title: 'Página da Loja', pagina:'Página da Loja', carros: results});
+          })
+          .catch(error => console.error(error))
+        }else{
+          next();
+        }
+      }
 
       app.get('/', (req, res) => {
         db.collection('cars').find().toArray()
@@ -121,7 +118,7 @@ MongoClient.connect(connctionString, {
           .catch(error => console.error(error))
       })*/
       
-      app.get('/sign-in', (req, res) => {
+      app.get('/sign-in',redirectHomeUsu, (req, res) => {
         res.render('login_usuario', {title: 'Página de login', pagina:'Página de login'});
       })
       
@@ -129,25 +126,34 @@ MongoClient.connect(connctionString, {
         res.render('cadastrar_usuario',{title: 'Página de Cadastrar', pagina:'Página de Cadastrar'});
       })
 
-      app.post('/segin-in', (req, res) => {
+      app.post('/segin-in',redirectHomeUsu, (req, res) => {
         let cont = 0;
         usuariosCollection.find().toArray()
           .then(results => {
             for(let i = 0; i<results.length; i++){
               if(req.body.email == results[i].email_user && req.body.senha == results[i].senha_user){
                 cont = 1;
+                session = req.session;
+                session.userId = req.body.email;
+                console.log(req.session)
                 res.redirect('loja_usuario');
               }
             }
             if(cont == 0){
-              res.render('login_usuario');
+              res.render('login_usuario_alert', {alerta: "Usuário inválido"});
             }
           })
           .catch(error => console.error(error))
-        
       })
 
-      app.get('/loja_usuario', (req, res, next) => {
+      app.get('/logout', (req,res) =>{
+        req.session = null;
+        console.log(req.session);
+        res.redirect('/');
+      })
+
+      app.get('/loja_usuario',redirectLogin, (req, res, next) => {
+        console.log(req.session);
           carsCollection.find().toArray()
           .then(results => {
             res.render('loja_usuario', {carros: results});
