@@ -169,6 +169,10 @@ MongoClient.connect(connctionString, {
       // app.listen(port, () => {
       //   console.log(`Example app listening on port ${port}`);
       // })
+     // app.listen(port, () => {
+     //   console.log(`Example app listening on port ${port}`);
+     // })
+
 
       app.get('/loja', (req, res) => {
         db.collection('cars').find().toArray()
@@ -183,6 +187,30 @@ MongoClient.connect(connctionString, {
 
 app.get('/loja-alugar', (req, res) => {
   res.render('menu_alugar',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+})
+
+app.get('/loja-aluguel', (req, res) => {
+  res.render('menu_alugueis',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+})
+
+app.get('/loja-conta', (req, res) => {
+  res.render('menu_conta',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+})
+
+app.get('/admin-loja', (req, res) => {
+  res.render('admin_loja',{title: 'Página da Loja do Admin', pagina:'Página da Loja do Admin'});
+})
+
+app.get('/admin-aluguel', (req, res) => {
+  res.render('admin_alugueis',{title: 'Página de Aluguéis do Admin', pagina:'Página de Aluguéis do Admin'});
+})
+
+app.get('/admin-usuario', (req, res) => {
+  res.render('admin_usuarios',{title: 'Página de Usuários do Admin', pagina:'Página de Usuários do Admin'});
+})
+
+app.get('/admin-add-carro', (req, res) => {
+  res.render('cadastrar_carro',{title: 'Página de Cadastrar Carro do Admin', pagina:'Página de Cadastrar Carro do Admin'});
 })
 
 app.listen(port, () => {

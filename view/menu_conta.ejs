@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head_conta.ejs') %>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><img src="img/man.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="/loja">Loja</a></li>
+            <li><a href="/loja-aluguel">Meus Aluguéis</a></li>
+            <li><a href="/loja-conta">Minha Conta</a></li>
+        </ul>
+
+        <div class="header-btn">
+            <a href="/" class="sign-in">Sair</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="leftbox">
+            <nav>
+                <a onclick="myFunction(0)" class="tab active">
+                    <i class='bx bxs-user-rectangle'></i>
+                </a>
+                <a onclick="myFunction(1)" class="tab">
+                    <i class='bx bx-edit-alt'></i>
+                </a>
+                <a onclick="myFunction(2)" class="tab">
+                    <i class='bx bx-key' ></i>
+                </a>
+            </nav>
+        </div>
+        <div class="rightbox">
+            <div class="profile tabShow" id="profile" style="display: block;">
+                <div class="title-form">
+                    <h1>Minha Conta</h1>
+                </div>
+                <div class="text">
+                    <span>Nome completo: </span>
+                    <span>Data de Nascimento: </span>
+                    <span>Gênero: </span>
+                    <span>Telefone: </span>
+                    <span>Email: </span>
+                </div>
+            </div>
+            <div class="edit tabShow" id="edit">
+                <h1><div class="title-form">
+                    <h1>Editar Conta</h1>
+                </div></h1>
+                <div class="text">
+                    <input type="text" name="" id="" value="Nome Completo">
+                    <input type="date" name="" id="" value="2013-12-12">
+                    <input type="text" name="" id="" value="Masculino">
+                    <input type="tel" name="" id="" value="123-456-7890">
+                    <input type="email" name="" id="" value="hollowknight@gmail.com">
+                </div>
+                <input type="button" class="btn" value="Editar Conta">
+            </div>
+            <div class="password tabShow" id="password">
+                <div class="title-form">
+                    <h1>Editar Senha</h1>
+                </div>
+                <div class="text">
+                    <input type="password" name="" id="" placeholder="Digite sua senha atual">
+                    <input type="password" name="" id="" placeholder="Digite sua nova senha">
+                    <input type="password" name="" id="" placeholder="Confirme sua nova senha">
+                </div>
+                <input type="button" class="btn" value="Editar Senha">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(id){
+                const profile = document.getElementById('profile');
+                const edit = document.getElementById('edit');
+                const password = document.getElementById('password');
+                if(id === 0){
+                     profile.style.display = 'block';
+                     edit.style.display = 'none';
+                     password.style.display = 'none';
+                }
+                if(id === 1){
+                    profile.style.display = 'none';
+                    edit.style.display = 'block';
+                    password.style.display = 'none';
+                }
+                if(id === 2){
+                    profile.style.display = 'none';
+                    edit.style.display = 'none';
+                    password.style.display = 'block';
+                }
+            }
+    </script>
+    
+    <%- include('foolder.ejs') %>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head_admin_loja.ejs') %>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><img src="img/avatar.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#loja">Loja</a></li>
+            <li><a href="/admin-aluguel">Aluguéis</a></li>
+            <li><a href="/admin-usuario">Usuários</a></li>
+        </ul>
+
+        <div class="header-btn">
+            <a href="/" class="sign-in">Sair</a>
+        </div>
+    </header>
+    <!-- Services -->
+    <section class="loja" id="loja">
+        <div class="heading">
+            <h1> Loja </h1>
+            <a href="/admin-add-carro" class="sign-in">Adicionar Carro</a>
+        </div>
+        <div class="services-container">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car1.jpg" alt="">
+                    </div>
+                    <p>Marca: </p>
+                    <h3>Nome:</h3>
+                    <label>Cor:</label>
+                    <h2>R$ 2671<span>/dia</span></h2>
+                    <label>Disponível Hoje</label>
+                    <a onclick="myFunction()" class="button">Editar</a>
+                    <a class="button">Remover</a>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car2.jpg" alt="">
+                    </div>
+                    <p>Marca: </p>
+                    <h3>Nome:</h3>
+                    <label>Cor:</label>
+                    <h2>R$ 2671<span>/dia</span></h2>
+                    <label>Disponível Hoje</label>
+                    <a onclick="myFunction()" class="button">Editar</a>
+                    <a class="button">Remover</a>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car3.jpg" alt="">
+                    </div>
+                    <p>Marca: </p>
+                    <h3>Nome:</h3>
+                    <label>Cor:</label>
+                    <h2>R$ 2671<span>/dia</span></h2>
+                    <label>Disponível Hoje</label>
+                    <a onclick="myFunction()" class="button">Editar</a>
+                    <a class="button">Remover</a>
+                </div>
+        </div>
+    </section>
+
+    <!-- Modal Section -->
+    <div class="bg-modal" id="bg-modal">
+        <div class="modal-content">
+            <div class="close"><i class='bx bx-x-circle' onclick="myFunction2()"></i></div>
+            <h2>Editar Carro</h2>
+            <form action="">
+                <label class="modal-label">Editar Foto do Carro:</label>
+                <input type="file" name="" id="">
+                <input type="text" src="" alt="" placeholder="Editar nome do carro">
+                <input type="text" src="" alt="" placeholder="Editar marca do carro">
+                <input type="text" src="" alt="" placeholder="Editar cor do carro">
+                <input type="number" src="" alt="" placeholder="Editar valor do carro">
+                <input type="number" src="" alt="" placeholder="Editar preço da diária">
+                <a href="" class="button">Editar</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'flex';
+            }
+            function myFunction2(){
+                const modal = document.getElementById('bg-modal');
+                modal.style.display = 'none';
+            }
+    </script>
+
+    <%- include('foolder.ejs') %>
+
+</body>
+</html>
