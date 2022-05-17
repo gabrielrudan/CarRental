@@ -6,6 +6,7 @@ const port = 3000;
 const user = "";
 const cookieSession = require('cookie-session')
 const cookieParser = require("cookie-parser");
+const { ObjectId } = require('mongodb');
 var sessionUser, sessionAdm;
 const oneDay = 1000 * 60 * 60 * 24;
 
@@ -89,44 +90,7 @@ MongoClient.connect(connctionString, {
           })
           .catch(error => console.error(error))
       })
-      
-      /*app.get('/show', (req, res)=>{
-        db.collection('frases').find().toArray()
-          .then(results => {
-            res.render('show', {frases: results})
-          })
-          .catch(error => console.error(error))
-          
-      })
-      
-      app.post('/show', (req, res) => {
-          frasesCollection.insertOne(req.body)
-          .then(result => {
-            console.log(result)
-            res.redirect('/')
-          })
-          .catch(error => console.error(error))
-      })
-      app.put('/show', (req, res) => {
-        console.log('app.put')
-        frasesCollection.findOneAndUpdate(
-          {nome: 'Yoda'},
-          {
-            $set:{
-              nome: req.body.name,
-              frase: req.body.quote
-            }
-          },
-          {
-            upsert: true
-          }
-        )
-          .then(result => {
-            console.log(result)
-          })
-          .catch(error => console.error(error))
-      })*/
-      
+            
       app.get('/sign-in',redirectHomeUsu, (req, res) => {
         res.render('login_usuario', {title: 'Página de login', pagina:'Página de login'});
       })
@@ -239,8 +203,69 @@ MongoClient.connect(connctionString, {
       })
 
       app.get('/loja-conta', (req, res) => {
-        res.render('menu_conta',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+        usuariosCollection.find().toArray()
+        .then(results => {
+          for(let i = 0; i < results.length; i++){
+            if(req.session.userId == results[i].email_user){
+              res.render('menu_conta',{title: 'Página de Alugar', pagina:'Página de Alugar', usuario: results[i]});
+            }
+          }
+        })
+        .catch(error => console.error(error))
       })
+
+      app.post('/loja-conta-update', (req, res) => {
+        usuariosCollection.find().toArray()
+        .then(results => {
+          for(let i = 0; i < results.length; i++){
+            if(req.session.userId == results[i].email_user){
+              var id_usuario = results[i]._id 
+            }
+          }
+
+          usuariosCollection.updateOne({_id: ObjectId(id_usuario)}, {
+            $set: {
+              nome_user: req.body.novo_nome,
+              data_nascimento_user: req.body.nova_data,
+              genero_user: req.body.novo_genero,
+              telefone_user: req.body.novo_telefone,
+              email_user: req.body.novo_email
+            }
+          })
+          res.redirect('/loja-conta')
+        })
+        .catch(error => console.error(error))
+      })
+
+      app.post('/loja-conta-update-senha', (req, res) => {
+        var senha_atual = req.body.senha_atual
+        var nova_senha = req.body.nova_senha
+        var conf_nova_senha = req.body.conf_nova_senha
+
+        usuariosCollection.find().toArray()
+        .then(results => {
+          for(let i = 0; i < results.length; i++){
+            if(req.session.userId == results[i].email_user){
+              var id_usuario = results[i]._id
+              var senha_atual_usuario = results[i].senha_user
+            }
+          }
+
+          if(senha_atual == senha_atual_usuario){
+            if((nova_senha != senha_atual) && (nova_senha == conf_nova_senha)){
+              usuariosCollection.updateOne({_id: ObjectId(id_usuario)}, {
+                $set:{
+                  senha_user: conf_nova_senha
+                }
+                  
+              })
+            }
+          }
+          res.redirect('/loja-conta')
+        })
+        .catch(error => console.error(error))
+      })
+
 
       app.get('/admin-aluguel', (req, res) => {
         res.render('admin_alugueis',{title: 'Página de Aluguéis do Admin', pagina:'Página de Aluguéis do Admin'});
@@ -261,6 +286,10 @@ MongoClient.connect(connctionString, {
           res.redirect('/admin-loja')
         })
         .catch(error => console.error(error))
+      })
+
+      app.get('/admin-delete-carro', (req, res) => {
+        //deletar carro
       })
 
       app.listen(port, () => {

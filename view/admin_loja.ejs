@@ -71,8 +71,12 @@
                         <label>Cor: <%= carros[i].cor %> </label>
                         <h2>R$ <%= carros[i].diaria %><span>/dia</span></h2>
                         <label>Disponível Hoje</label>
-                        <a onclick="myFunction()" class="button">Editar</a>
-                        <a class="button">Remover</a>
+                        <form method="post" action="/admin-editar-carro">
+                            <a onclick="myFunction()" class="button">Editar</a>
+                        </form>
+                        <form method="get" action="/admin-delete-carro">
+                            <button type="submit" id="btn-remover-carro"><a class="button">Remover</a></button>
+                        </form>
                     </div>
                 <% } %>  
         </div>
@@ -84,14 +88,11 @@
             <div class="close"><i class='bx bx-x-circle' onclick="myFunction2()"></i></div>
             <h2>Editar Carro</h2>
             <form action="">
-                <label class="modal-label">Editar Foto do Carro:</label>
-                <input type="file" name="" id="">
                 <input type="text" src="" alt="" placeholder="Editar nome do carro">
                 <input type="text" src="" alt="" placeholder="Editar marca do carro">
                 <input type="text" src="" alt="" placeholder="Editar cor do carro">
-                <input type="number" src="" alt="" placeholder="Editar valor do carro">
                 <input type="number" src="" alt="" placeholder="Editar preço da diária">
-                <a href="" class="button">Editar</a>
+                <button type="submit" id="btn-editar-carro"><a href="" class="button">Editar</a></button>
             </form>
         </div>
     </div>

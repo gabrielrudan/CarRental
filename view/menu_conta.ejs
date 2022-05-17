@@ -41,36 +41,40 @@
                     <h1>Minha Conta</h1>
                 </div>
                 <div class="text">
-                    <span>Nome completo: </span>
-                    <span>Data de Nascimento: </span>
-                    <span>Gênero: </span>
-                    <span>Telefone: </span>
-                    <span>Email: </span>
+                    <span>Nome completo:  <%= usuario.nome_user %> </span>
+                    <span>Data de Nascimento:  <%= usuario.data_nascimento_user%></span>
+                    <span>Gênero:  <%= usuario.genero_user %></span>
+                    <span>Telefone:  <%= usuario.telefone_user %></span>
+                    <span>Email:  <%= usuario.email_user %></span>
                 </div>
             </div>
             <div class="edit tabShow" id="edit">
                 <h1><div class="title-form">
                     <h1>Editar Conta</h1>
                 </div></h1>
-                <div class="text">
-                    <input type="text" name="" id="" value="Nome Completo">
-                    <input type="date" name="" id="" value="2013-12-12">
-                    <input type="text" name="" id="" value="Masculino">
-                    <input type="tel" name="" id="" value="123-456-7890">
-                    <input type="email" name="" id="" value="hollowknight@gmail.com">
-                </div>
-                <input type="button" class="btn" value="Editar Conta">
+                <form method="post" action="/loja-conta-update">
+                    <div class="text">
+                        <input type="text" name="novo_nome" id="" value="<%= usuario.nome_user %>">
+                        <input type="date" name="nova_data" id="" value="<%= usuario.data_nascimento %>">
+                        <input type="text" name="novo_genero" id="" value="<%= usuario.genero_user %>">
+                        <input type="tel" name="novo_telefone" id="" value="<%= usuario.telefone_user %>">
+                        <input type="email" name="novo_email" id="" value="<%= usuario.email_user %>">
+                    </div>
+                    <button type="submit"><input type="button" class="btn" value="Editar Conta"></button>
+                </form>
             </div>
             <div class="password tabShow" id="password">
                 <div class="title-form">
                     <h1>Editar Senha</h1>
                 </div>
-                <div class="text">
-                    <input type="password" name="" id="" placeholder="Digite sua senha atual">
-                    <input type="password" name="" id="" placeholder="Digite sua nova senha">
-                    <input type="password" name="" id="" placeholder="Confirme sua nova senha">
-                </div>
-                <input type="button" class="btn" value="Editar Senha">
+                <form action="/loja-conta-update-senha" method="post">
+                    <div class="text">
+                        <input type="password" name="senha_atual" id="" placeholder="Digite sua senha atual">
+                        <input type="password" name="nova_senha" id="" placeholder="Digite sua nova senha">
+                        <input type="password" name="conf_nova_senha" id="" placeholder="Confirme sua nova senha">
+                    </div>
+                    <button type="submit"><input type="button" class="btn" value="Editar Senha"></button>
+                </form>
             </div>
         </div>
     </div>
