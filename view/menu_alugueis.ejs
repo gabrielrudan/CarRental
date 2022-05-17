@@ -31,8 +31,6 @@
                 <tr>
                     <th>Carro</th>
                     <th>Dia do Aluguel</th>
-                    <th>Diárias</th>
-                    <th>Valor Total</th>
                     <th>Status</th>
                 </tr>
                 <% for(let i=0; i<elementos.length ;i++){ %> 
@@ -48,8 +46,6 @@
                         </div>
                     </td>
                     <td><%= elementos[i].data_inicio %> </td>
-                    <td><%= cont++ %> </td>
-                    <td>R$ 52719</td>
                     <td><%= elementos[i].status %> </td>
                 </tr>   
                 <% } %>                

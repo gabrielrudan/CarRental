@@ -187,7 +187,18 @@ MongoClient.connect(connctionString, {
             }
           })
           .catch(error => console.error(error))
-        valor = req.body.data_final - req.body.data_inicio;
+
+          const now = new Date(); // Data de hoje
+          const past = new Date('2014-07-07'); // Outra data no passado
+          const diff = Math.abs(now.getTime() - past.getTime()); // Subtrai uma data pela outra
+          const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+          var date1 = new Date(req.body.data_inicio) 
+          var date2 = new Date(req.body.data_final)
+          var Difference_In_Time = Math.abs(date2.getTime() - date1.getTime());
+          var Difference_In_Days = Math.ceil( Difference_In_Time / (1000 * 3600 * 24));
+          var valort = Difference_In_Days * req.body.diaria;
+          req.body.valor_total = valort;
         if(cont2 == 0){
         alugueisCollection.insertOne(req.body)
         .then(results => {
@@ -307,18 +318,31 @@ MongoClient.connect(connctionString, {
       })
 
 
-      app.get('/admin-aluguel', (req, res) => {
-        var alugueis = {};
-        var cont;
+      app.get('/admin-aluguel',redirectLoginAdm, (req, res) => {
         alugueisCollection.find().toArray()
         .then(results => {
-          for(let i=0; i<results.length; i++){
-            if(results[i].aprovacao == false){
-              alugueis[cont++] = results[i];
-            }
+          res.render('admin_alugueis',{alugueis: results});
+        })
+        
+      })
+
+      app.get('/admin-aceitar-pedido',redirectLogin, (req, res) => {
+        console.log(req.query.cod)
+        var id = req.query.cod
+        var aceito = 'Aceito'
+        alugueisCollection.updateOne({_id: ObjectId(id)}, {
+          $set:{
+            status: aceito
           }
         })
-        res.render('admin_alugueis',{alugueis: alugueis});
+        res.redirect('/admin-aluguel')
+      })
+
+      app.get('/admin-rejeitar-pedido',redirectLoginAdm, (req, res) => {
+        console.log(req.query.cod)
+        var id = req.query.cod
+        alugueisCollection.deleteOne({_id: ObjectId(id)})
+        res.redirect('/admin-aluguel')
       })
 
       app.get('/admin-usuario', (req, res) => {
@@ -363,7 +387,7 @@ MongoClient.connect(connctionString, {
         res.render('cadastrar_usuarios_admin',{title: 'Página de Cadastrar', pagina:'Página de Cadastrar'});
       })
 
-      app.post('/cadastrar-usuario-admin', (req, res) => {
+      app.post('/cadastrar-usuario-admin',redirectLoginAdm, (req, res) => {
         /**Pra fazer funcionar os campos que vão ser salvos no banco tem que ter o atributo name */
         let cont2 = 0;
         adminsCollection.find().toArray()

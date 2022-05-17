@@ -30,11 +30,11 @@
                 <form action="/cadastrar-aluguel" method="post">
                     <div class="input-box">
                         <span>Dia do Aluguel<br></span>
-                        <input type="date" name="data_inicio" id="">
+                        <input type="date" name="data_inicio" id="data1">
                     </div>
                     <div class="input-box">
                         <span>Dia do Retorno<br></span>
-                        <input type="date" name="data_final" id="">
+                        <input type="date" name="data_final" id="data2">
                     </div>
                     <span>Forma de pagamento</span>
                     <select name="tipo_pagamento" id="">
@@ -49,6 +49,7 @@
                     <input type="hidden" name="valor_diaria" value="<%= diaria %> ">
                     <input type="hidden" name="email" value="<%= email %> ">
                     <input type="hidden" name="status" value="Aguardando confirmação">
+                    <input type="hidden" name="valor_total" >
                     <input type="submit" value="Alugar" class="btn">
                 </form>
             </div>

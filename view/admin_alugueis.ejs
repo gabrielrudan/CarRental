@@ -29,11 +29,19 @@
             <table>
                 <tr>
                     <th>Id do Aluguel</th>
-                    <th>Nome do Cliente</th>
-                    <th>Valor Total</th>
+                    <th>Email do Cliente</th>
                     <th>Status do Pedido</th>
                     <th>Ações</th>
                 </tr>
+                <% for(let i=0; i<alugueis.length; i++){ %> 
+                    <tr>
+                        <td><%= alugueis[i]._id %> </td>
+                        <td><%= alugueis[i].email %> </td>
+                        <td><%= alugueis[i].status %> </td>
+                       <td><button type="submit" id="btn-remover-carro"><a class="button" href="/admin-aceitar-pedido?cod=<%= alugueis[i]._id %>">Aceitar</a></button> <button type="submit" id="btn-remover-carro"><a class="button" name="btn-rejeitar" href="/admin-rejeitar-pedido?cod=<%= alugueis[i]._id %>">Rejeitar</a></button></td> 
+                        
+                    </tr>
+                <% } %> 
             </table>
     
         </div>
