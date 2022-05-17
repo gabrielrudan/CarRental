@@ -211,7 +211,7 @@ MongoClient.connect(connctionString, {
         .then(results => {
         for(let i=0 ; i<results.length; i++){
           if(req.query.cod == results[i]._id){
-            res.render('menu_alugar',{idUser: idUser,idCarro: results[i]._id,marca: results[i].marca, nome: results[i].nome, cor: results[i].cor, diaria: results[i].diaria});
+            res.render('menu_alugar',{email: req.session.userId,idCarro: results[i]._id,marca: results[i].marca, nome: results[i].nome, cor: results[i].cor, diaria: results[i].diaria});
           }
         }
         })
@@ -226,30 +226,19 @@ MongoClient.connect(connctionString, {
       })
 
       app.get('/loja-aluguel',redirectLogin, (req, res) => {
-        var elementos = new Array;
-        usuariosCollection.find().toArray()
-        .then(results1 => {
-          for(let j=0; j<results1.length; j++){
-            if(req.session.userId == results1[j].email_user){
-              
-            alugueisCollection.find().toArray()
+        var elementos = new Array();
+        var email, emailC;
+        alugueisCollection.find().toArray()
             .then(results => {
+              email = req.session.userId;
               for(let i=0; i<results.length; i++){
-                console.log("Estou aqui")
-                console.log('_id: ', results1[j]._id.toString())
-                console.log('idUser ', results[i].idUser.toString())
-                if(results1[j]._id.toString() === results[i].idUser.toString()){
-                  console.log(results[i])
-                  elementos.push(results[i]);
-                  res.render('menu_alugueis',{elementos: results[i], cont: 1});
-                }
+                emailC = results[i].email
+                if(email = emailC){
+                  elementos.push(results[i]);  
+                } 
               }
+              res.render('menu_alugueis',{elementos: elementos, cont: 1});
             })
-          }
-          }
-        })
-        
-        
         
       })
 
