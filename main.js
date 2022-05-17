@@ -347,30 +347,10 @@ MongoClient.connect(connctionString, {
         console.log(id)
       })
 
-      app.get('/admin-delete-carro/:id', (req, res) => {
-        console.log('Entrou no delete-carro')
-        carsCollection.find().toArray()
-        //console.log(carsCollection.find().toArray())
-        .then(results => {
-          console.log('then')
-          for(let i = 0; i < results.length; i++){
-            console.log('for')
-            console.log(req.params.id)
-            console.log(results[i]._id)
-            if(results[i]._id.toString() == req.params.id.toString()){
-              console.log('if')
-              var id = results[i]._id
-              console.log(id)
-              console.log(req.params.id)
-            }
-          }
-
+      app.post('/admin-delete-carro', (req, res) => {
+          var id = req.body.id_carro
           carsCollection.deleteOne({_id: ObjectId(id)})
           res.redirect('/admin-loja')
-        })
-        .catch(error => console.error(error))
-
-        
       })
 
 
