@@ -71,10 +71,9 @@
                         <label>Cor: <%= carros[i].cor %> </label>
                         <h2>R$ <%= carros[i].diaria %><span>/dia</span></h2>
                         <label>Disponível Hoje</label>
-                        <form method="post" action="/admin-editar-carro/:<%= carros[i]._id%> ">
-                            <a onclick="myFunction()" class="button">Editar</a>
-                        </form>
-                        <form method="get" action="/admin-delete-carro/:<%= carros[i]._id%> ">
+                        <a onclick="myFunction()" class="button">Editar</a>
+                        <form method="post" action="/admin-delete-carro">
+                            <input type="hidden" name="id_carro" value= <%= carros[i]._id %>>
                             <button type="submit" id="btn-remover-carro"><a class="button">Remover</a></button>
                         </form>
                     </div>
