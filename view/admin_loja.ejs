@@ -71,10 +71,10 @@
                         <label>Cor: <%= carros[i].cor %> </label>
                         <h2>R$ <%= carros[i].diaria %><span>/dia</span></h2>
                         <label>Disponível Hoje</label>
-                        <form method="post" action="/admin-editar-carro">
+                        <form method="post" action="/admin-editar-carro/:<%= carros[i]._id%> ">
                             <a onclick="myFunction()" class="button">Editar</a>
                         </form>
-                        <form method="get" action="/admin-delete-carro">
+                        <form method="get" action="/admin-delete-carro/:<%= carros[i]._id%> ">
                             <button type="submit" id="btn-remover-carro"><a class="button">Remover</a></button>
                         </form>
                     </div>
@@ -87,7 +87,7 @@
         <div class="modal-content">
             <div class="close"><i class='bx bx-x-circle' onclick="myFunction2()"></i></div>
             <h2>Editar Carro</h2>
-            <form action="">
+            <form action="/admin-editar-carro/:id">
                 <input type="text" src="" alt="" placeholder="Editar nome do carro">
                 <input type="text" src="" alt="" placeholder="Editar marca do carro">
                 <input type="text" src="" alt="" placeholder="Editar cor do carro">

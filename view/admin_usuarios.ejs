@@ -24,7 +24,7 @@
     <section class="loja" id="loja">
         <div class="heading">
             <h1> Usuários </h1>
-            <a href="/sign-up" class="sign-in">Adicionar Usuário</a>
+            <a href="/sign-up-admin" class="sign-in">Adicionar Usuário</a>
         </div>
         <div class="small-container cart-page">
             <table>
@@ -32,42 +32,16 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Telefone</th>
-                    <th>Senha</th>
                     <th>Editar</th>
-                    <th>Ações</th>
                 </tr>
-                <tr>
-                    <td>Gabriel Rudan Sales Matos</td>
-                    <td>gabrielrudan@gmail.com</td>
-                    <td>(88)9999-9999</td>
-                    <td>kjdsjskjdkj</td>
-                    <td><a onclick="myFunction()" class="button">Editar</a></td>
-                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
-                </tr>
-                <tr>
-                    <td>Letícia Torres Pereira</td>
-                    <td>leticiatorres@gmail.com</td>
-                    <td>(88)9999-9999</td>
-                    <td>bcxbxnbn</td>
-                    <td><a onclick="myFunction()" class="button">Editar</a></td>
-                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
-                </tr>
-                <tr>
-                    <td>Raylander Marques Melo</td>
-                    <td>raylandermarques@gmail.com</td>
-                    <td>(88)9999-9999</td>
-                    <td>lakslajos</td>
-                    <td><a onclick="myFunction()" class="button">Editar</a></td>
-                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
-                </tr>
-                <tr>
-                    <td>Dirlia Vieira Sousa</td>
-                    <td>dirliavieira@gmail.com</td>
-                    <td>(88)9999-9999</td>
-                    <td>wrwtqtwyq</td>
-                    <td><a onclick="myFunction()" class="button">Editar</a></td>
-                    <td><a class="button">Ativar</a><a class="button">Desativar</a></td>
-                </tr>
+                <% for(let i = 0; i < admins.length; i++) {%>
+                    <tr>
+                        <td><%= admins[i].nome_user %> </td>
+                        <td><%= admins[i].email_user %></td>
+                        <td><%= admins[i].telefone_user %></td>
+                        <td><a onclick="myFunction()" class="button">Editar</a></td>
+                    </tr>
+                <% } %>  
             </table>
     
         </div>

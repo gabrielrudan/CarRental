@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="'en">
+    <head>
+        <%- include('head_cad.ejs') %>
+    </head>
+    <body>
+        <div class="login-container">
+            <div class="login-form">
+                <span class="title-form">Cadastro Administrador</span>
+
+                <form action="/cadastrar-usuario-admin" method="post">
+                    <div class="input-field">
+                        <input type="text" name="nome_user" placeholder="Digite seu nome" required>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <span><br>Selecione sua data de nascimento</span>
+                    <div class="input-field" style="margin-top: 0;">
+                        <input type="date" name="data_nascimento_user" id="" required>
+                        <i class='bx bxs-calendar'></i>
+                    </div>
+                    <span><br>Selecione seu gênero</span>
+                    <div class="input-field" style="margin-top: 0;">
+                        <select name="genero_user" id="">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <input type="tel" name="telefone_user" placeholder="Digite seu telefone" required>
+                        <i class='bx bxs-phone'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" name="email_user" placeholder="Digite seu email" id="emailAd" required>
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="Digite sua senha" id="password" required>
+                        <i class='bx bx-key icon'></i>
+                        <i onclick="myFunction()" id="hide1" class='bx bx-low-vision showHidePw'></i>
+                        <i onclick="myFunction()" id="hide2" class='bx bx-show showHidePw'></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="senha_user" onchange="myFunction2()" placeholder="Confirme sua senha" id="password2" required>
+                        <i class='bx bx-key icon'></i>
+                    </div>
+                    <span class="erro-pass">Erro - Confirmação de senha não corresponde!</span>
+                    <div class="input-field button">
+                        <button type="submit"><input type="button" value="Cadastrar"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function myFunction(){
+                const input = document.querySelector('#password');
+                const input2 = document.querySelector('#password2');
+                const eye1 = document.getElementById('hide1');
+                const eye2 = document.getElementById('hide2');
+                if(input.type === 'password'){
+                     input.type = 'text';
+                     input2.type = 'text';
+                     eye1.style.display = 'none';
+                     eye2.style.display = 'block';
+                }
+                else{
+                    input.type = 'password';
+                    input2.type = 'password';
+                    eye1.style.display = 'block';
+                    eye2.style.display = 'none';
+                }
+            }
+        </script>
+        <script>
+            function myFunction2(){
+                const input = document.querySelector('#password');
+                const input2 = document.querySelector('#password2');
+                const error = document.querySelector('.erro-pass');
+                if(input == input2){
+                    error.style.display = 'none';
+                }
+                else{
+                    error.style.display = 'block';
+                }
+            }
+        </script>
+
+    </body>
+</html>

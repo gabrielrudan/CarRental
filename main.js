@@ -227,17 +227,30 @@ MongoClient.connect(connctionString, {
 
       app.get('/loja-aluguel',redirectLogin, (req, res) => {
         var elementos = new Array;
-        console.log(idUser);
-        alugueisCollection.find().toArray()
-        .then(results => {
-          for(let i=0; i<results.length; i++){
-            if(idUser == results[i].idUser){
-              console.log(results[i])
-              elementos.push(results[i]);
-            }
+        usuariosCollection.find().toArray()
+        .then(results1 => {
+          for(let j=0; j<results1.length; j++){
+            if(req.session.userId == results1[j].email_user){
+              
+            alugueisCollection.find().toArray()
+            .then(results => {
+              for(let i=0; i<results.length; i++){
+                console.log("Estou aqui")
+                console.log('_id: ', results1[j]._id.toString())
+                console.log('idUser ', results[i].idUser.toString())
+                if(results1[j]._id.toString() === results[i].idUser.toString()){
+                  console.log(results[i])
+                  elementos.push(results[i]);
+                  res.render('menu_alugueis',{elementos: results[i], cont: 1});
+                }
+              }
+            })
+          }
           }
         })
-        res.render('menu_alugueis',{elementos: elementos, cont: 1});
+        
+        
+        
       })
 
       app.get('/loja-conta', (req, res) => {
@@ -320,7 +333,11 @@ MongoClient.connect(connctionString, {
       })
 
       app.get('/admin-usuario', (req, res) => {
-        res.render('admin_usuarios',{title: 'Página de Usuários do Admin', pagina:'Página de Usuários do Admin'});
+        adminsCollection.find().toArray()
+        .then(results => {
+          res.render('admin_usuarios',{title: 'Página de Usuários do Admin', pagina:'Página de Usuários do Admin', admins: results});
+        })
+        .catch(error => console.error(error))
       })
 
       app.get('/admin-add-carro', (req, res) => {
@@ -336,8 +353,68 @@ MongoClient.connect(connctionString, {
         .catch(error => console.error(error))
       })
 
-      app.get('/admin-delete-carro', (req, res) => {
-        //deletar carro
+      app.post('/admin-editar-carro/:id', (req, res) => {
+        var id = req.params.id
+        console.log(id)
+      })
+
+      app.get('/admin-delete-carro/:id', (req, res) => {
+        console.log('Entrou no delete-carro')
+        carsCollection.find().toArray()
+        //console.log(carsCollection.find().toArray())
+        .then(results => {
+          console.log('then')
+          for(let i = 0; i < results.length; i++){
+            console.log('for')
+            console.log(req.params.id)
+            console.log(results[i]._id)
+            if(results[i]._id.toString() == req.params.id.toString()){
+              console.log('if')
+              var id = results[i]._id
+              console.log(id)
+              console.log(req.params.id)
+            }
+          }
+
+          carsCollection.deleteOne({_id: ObjectId(id)})
+          res.redirect('/admin-loja')
+        })
+        .catch(error => console.error(error))
+
+        
+      })
+
+
+
+      /**
+       * Cadastro admin
+       */
+
+      app.get('/sign-up-admin', (req, res) => {
+        res.render('cadastrar_usuarios_admin',{title: 'Página de Cadastrar', pagina:'Página de Cadastrar'});
+      })
+
+      app.post('/cadastrar-usuario-admin', (req, res) => {
+        /**Pra fazer funcionar os campos que vão ser salvos no banco tem que ter o atributo name */
+        let cont2 = 0;
+        adminsCollection.find().toArray()
+          .then(results => {
+            for(let i = 0; i<results.length; i++){
+              if(req.body.email_user == results[i].email_user ){
+                cont2 = 1;
+                res.render('cadastrar_usuario _alert', {alerta: 'Email já cadastrado!'});
+              }
+            }
+          })
+          .catch(error => console.error(error))
+        if(cont2 == 0){
+        adminsCollection.insertOne(req.body)
+        .then(results => {
+          console.log(results)
+          res.redirect('/admin-usuario')
+        })
+        .catch(error => console.error(error))
+        }
       })
 
       app.listen(port, () => {
