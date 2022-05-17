@@ -48,16 +48,11 @@
                         <option value="boleto">Boleto</option>
                         <option value="pix">Pix</option>
                     </select>
-                    <input type="hidden" name="idCarro" value="<%= idCarro %> ">
-                    <input type="hidden" name="marca_carro" value="<%= marca %> ">
-                    <input type="hidden" name="nome_carro" value="<%= nome %> ">
-                    <input type="hidden" name="cor_carro" value="<%= cor %> ">
-                    <input type="hidden" name="valor_diaria" value="<%= diaria %> ">
-                    <input type="hidden" name="idUser" value="<%= idUser %> ">
-                    <input type="hidden" name="status" value="Aguardando confirmação">
                     <input type="submit" value="Alugar" class="btn">
                 </form>
             </div>
-
+        <script>
+            alert("<%= alerta %>");
+        </script>
 </body>
 </html>

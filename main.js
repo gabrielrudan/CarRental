@@ -50,6 +50,8 @@ MongoClient.connect(connctionString, {
       const carsCollection = db.collection('cars')
       const alugueisCollection = db.collection('alugueis')
 
+      var idUser;
+
       /**Sessão */
       const redirectLogin = (req,res,next) =>{
         sessionUser = req.session;
@@ -108,6 +110,7 @@ MongoClient.connect(connctionString, {
                 cont = 1;
                 sessionUser = req.session;
                 sessionUser.userId = req.body.email;
+                idUser = results[i]._id;
                 console.log(req.session)
                 res.redirect('loja_usuario');
               }
@@ -171,6 +174,30 @@ MongoClient.connect(connctionString, {
         }
       })
 
+      app.post('/cadastrar-aluguel', (req, res) => {
+        /**Pra fazer funcionar os campos que vão ser salvos no banco tem que ter o atributo name */
+        let cont2 = 0,valor;
+        alugueisCollection.find().toArray()
+          .then(results => {
+            for(let i = 0; i<results.length; i++){
+              if(req.body.data_inicio == results[i].data_inicio ){
+                cont2 = 1;
+                res.render('menu-alugar',{alerta: 'Data inválida'})
+              }
+            }
+          })
+          .catch(error => console.error(error))
+        valor = req.body.data_final - req.body.data_inicio;
+        if(cont2 == 0){
+        alugueisCollection.insertOne(req.body)
+        .then(results => {
+          console.log(results)
+          res.redirect('/loja-aluguel');
+        })
+        .catch(error => console.error(error))
+        }
+      })
+
       app.get('/loja', (req, res) => {
         db.collection('cars').find().toArray()
           .then(results => {
@@ -184,7 +211,7 @@ MongoClient.connect(connctionString, {
         .then(results => {
         for(let i=0 ; i<results.length; i++){
           if(req.query.cod == results[i]._id){
-            res.render('menu_alugar',{marca: results[i].marca, nome: results[i].nome, cor: results[i].cor, diaria: results[i].diaria});
+            res.render('menu_alugar',{idUser: idUser,idCarro: results[i]._id,marca: results[i].marca, nome: results[i].nome, cor: results[i].cor, diaria: results[i].diaria});
           }
         }
         })
@@ -198,8 +225,19 @@ MongoClient.connect(connctionString, {
         .catch(error => console.error(error))
       })
 
-      app.get('/loja-aluguel', (req, res) => {
-        res.render('menu_alugueis',{title: 'Página de Alugar', pagina:'Página de Alugar'});
+      app.get('/loja-aluguel',redirectLogin, (req, res) => {
+        var elementos = new Array;
+        console.log(idUser);
+        alugueisCollection.find().toArray()
+        .then(results => {
+          for(let i=0; i<results.length; i++){
+            if(idUser == results[i].idUser){
+              console.log(results[i])
+              elementos.push(results[i]);
+            }
+          }
+        })
+        res.render('menu_alugueis',{elementos: elementos, cont: 1});
       })
 
       app.get('/loja-conta', (req, res) => {
@@ -268,7 +306,17 @@ MongoClient.connect(connctionString, {
 
 
       app.get('/admin-aluguel', (req, res) => {
-        res.render('admin_alugueis',{title: 'Página de Aluguéis do Admin', pagina:'Página de Aluguéis do Admin'});
+        var alugueis = {};
+        var cont;
+        alugueisCollection.find().toArray()
+        .then(results => {
+          for(let i=0; i<results.length; i++){
+            if(results[i].aprovacao == false){
+              alugueis[cont++] = results[i];
+            }
+          }
+        })
+        res.render('admin_alugueis',{alugueis: alugueis});
       })
 
       app.get('/admin-usuario', (req, res) => {

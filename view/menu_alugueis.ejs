@@ -17,7 +17,7 @@
         </ul>
 
         <div class="header-btn">
-            <a href="/" class="sign-in">Sair</a>
+            <a href="/logout" class="sign-in">Sair</a>
         </div>
     </header>
     <!-- cart items details-->
@@ -35,57 +35,24 @@
                     <th>Valor Total</th>
                     <th>Status</th>
                 </tr>
+                <% for(let i=0; i<elementos.length ;i++){ %> 
                 <tr>
                     <td>
                         <div class="cart-info">
-                            <img src="img/car1.jpg" alt="">
                             <div class="text">
-                                <p style="margin-bottom: 2px;">Nome do Carro</p>
-                                <small>Marca</small>
-                                <small>Cor</small>
-                                <small>R$ 432/dia</small>
+                                <p style="margin-bottom: 2px;"><%= elementos[i].nome_carro %> </p>
+                                <small><%= elementos[i].marca_carro %> </small>
+                                <small><%= elementos[i].cor_carro %> </small>
+                                <small>R$ <%= elementos[i].valor_diaria %> /dia</small>
                             </div>
                         </div>
                     </td>
-                    <td>dd/mm/aaaa</td>
-                    <td>1</td>
+                    <td><%= elementos[i].data_inicio %> </td>
+                    <td><%= cont++ %> </td>
                     <td>R$ 52719</td>
-                    <td>Aguardando confirmação</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="img/car2.jpg" alt="">
-                            <div class="text">
-                                <p style="margin-bottom: 2px;">Nome do Carro</p>
-                                <small>Marca</small>
-                                <small>Cor</small>
-                                <small>R$ 432/dia</small>
-                            </div>
-                        </div>
-                    </td>
-                    <td>dd/mm/aaaa</td>
-                    <td>1</td>
-                    <td>R$ 52719</td>
-                    <td>Aguardando confirmação</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="img/car3.jpg" alt="">
-                            <div class="text">
-                                <p style="margin-bottom: 2px;">Nome do Carro</p>
-                                <small>Marca</small>
-                                <small>Cor</small>
-                                <small>R$ 432/dia</small>
-                            </div>
-                        </div>
-                    </td>
-                    <td>dd/mm/aaaa</td>
-                    <td>1</td>
-                    <td>R$ 52719</td>
-                    <td>Aguardando confirmação</td>
-                </tr>
+                    <td><%= elementos[i].status %> </td>
+                </tr>   
+                <% } %>                
             </table>
     
         </div>
